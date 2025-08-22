@@ -22,12 +22,12 @@ const userSchema = new Schema(
             required: true,
         },
 
-       phone_number: {
-  type: String,
-  minlength: 10,  // minimum length (e.g., local numbers)
-  maxlength: 15,  // E.164 standard max length
-  required: true,
-},
+        phone_number: {
+            type: String,
+            minlength: 10,  // minimum length (e.g., local numbers)
+            maxlength: 15,  // E.164 standard max length
+            required: true,
+        },
         role: {
             type: String,
             enum: ["user", "admin", "guest"],
@@ -36,10 +36,21 @@ const userSchema = new Schema(
         isVerified: {
             type: Boolean,
             default: false,
-        }
+        },
+        walletBalance: {
+      type: Number,
+      default: 0, // user starts with 0
+    },
+         watchlist: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Watchlist", // Reference to Watchlist model
+      },
+    ],
 
 
     },
+
     { timestamps: true }
 );
 

@@ -55,7 +55,7 @@ if (!email && !phone_number) {
 
 const user = await UserModel.findOne({
       $or: [{ email }, { phone_number }],
-    });
+    }).select("+password");
 
 
  if (!user) {
@@ -131,3 +131,22 @@ export const requestPasswordChange = async (req, res) => {
     return SendResponse(res, 500, true, null, err.message);
   }
 };
+
+
+export const getUserProfile = async(req,res)=>{
+try {
+  
+
+  const user = await UserModel.findById(req.user.id).select("-password");
+  if (!user) {
+    return SendResponse(res, 404, true, null, "User not found");
+  }
+  SendResponse(res, 200, false, user, "User profile retrieved successfully");
+
+
+
+} catch (error) {
+  SendResponse(res, 500, true, null, error.message);
+}
+
+}

@@ -1,13 +1,16 @@
 import express from 'express';
-import { acceptUser, approvePasswordChange } from '../controllers/adminController.js';
+import { acceptUser, approveRejectrequest, approveTransaction, getAllUsers, getAllusersTransactions, getUserpasswordRequests, getUserprofileRequests, } from '../controllers/adminController.js';
 
 
 const router = express.Router()
 
-
-
-router.put("/:id" , acceptUser)
-router.patch("/change-password/approve/:id", approvePasswordChange) // Assuming approvePasswordChange is imported from the adminController.js
+router.get("/users", getAllUsers)
+router.get("/user-requests", getUserprofileRequests)
+router.put("/:id", acceptUser)
+router.get("/password-requests", getUserpasswordRequests)
+router.patch("/change-password/approve/:id", approveRejectrequest)
+router.get("/get-all-transactions" , getAllusersTransactions)
+router.put("/transactions/:id", approveTransaction);
 
 
 export default router;
