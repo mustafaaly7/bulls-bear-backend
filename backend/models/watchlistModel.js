@@ -16,10 +16,10 @@ const watchlistSchema = new Schema(
       type: String,
       required: true, // e.g. "AAPL", "BTC", "ETH"
     },
-    addedAt: {
-      type: Date,
-      default: Date.now,
-    },
+    // addedAt: {
+    //   type: Date,
+    //   default: Date.now,
+    // },
   },
   { timestamps: true }
 );

@@ -41,6 +41,13 @@ const userSchema = new Schema(
       type: Number,
       default: 0, // user starts with 0
     },
+    cryptoHoldings: [
+      {
+        asset: { type: String }, // e.g., 'ethereum'
+        symbol: { type: String }, // e.g., 'ETH'
+        amount: { type: Number, default: 0 }, // Number of tokens user owns
+      },
+    ],
          watchlist: [
       {
         type: Schema.Types.ObjectId,
