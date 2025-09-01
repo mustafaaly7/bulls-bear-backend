@@ -12,12 +12,15 @@ app.use(express.json());
 
 ConnectDb()
 
-// app.use(cors({
-//     origin: "*", // Allow frontend
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true
-// }));
-// app.options("*", cors()); // Handle preflight requests
+const AllowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : ["http://localhost:5173"];
+app.use(
+  cors({
+    origin: AllowedOrigins,
+    credentials: true,
+  })
+);
 
 
 app.get("/", (req, res) => {
