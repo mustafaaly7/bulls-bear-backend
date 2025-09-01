@@ -6,18 +6,18 @@ import { ConnectDb } from "./config/connectDb.js";
 import watchlistRoutes from  './routes/watchlistRoutes.js'
 import transactionRoutes from "./routes/transactionRoutes.js"
 import tradeRoutes from './routes/tradeRoutes.js'
-import cors from "cors";
+// import cors from "cors";
 const app = express();
 app.use(express.json());
 
 ConnectDb()
 
-app.use(cors({
-    origin: "*", // Allow frontend
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
-app.options("*", cors()); // Handle preflight requests
+// app.use(cors({
+//     origin: "*", // Allow frontend
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true
+// }));
+// app.options("*", cors()); // Handle preflight requests
 
 
 app.get("/", (req, res) => {
@@ -32,7 +32,5 @@ app.use("/api/transaction",transactionRoutes );
 app.use("/api/trade",tradeRoutes );
 
 
-// app.listen(3000, () => {  console.log("Server is running on port 3000");
-// });
-
-export default app;
+app.listen(3000, () => {  console.log("Server is running on port 3000");
+});
