@@ -67,7 +67,7 @@ const user = await UserModel.findOne({
       return SendResponse(res, 401, true, null, "Invalid credentials");
     }
 
-    const token  = jwt.sign({ id: user._id }, process.env.AUTH_SECRET, {
+    const token  = jwt.sign({ id: user._id, role:user.role }, process.env.AUTH_SECRET, {
       expiresIn: "7d",
     });
     // If you want to return token/session later, you can add here
