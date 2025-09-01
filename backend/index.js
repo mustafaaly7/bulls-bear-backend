@@ -6,7 +6,7 @@ import { ConnectDb } from "./config/connectDb.js";
 import watchlistRoutes from  './routes/watchlistRoutes.js'
 import transactionRoutes from "./routes/transactionRoutes.js"
 import tradeRoutes from './routes/tradeRoutes.js'
-// import cors from "cors";
+import cors from "cors";
 const app = express();
 app.use(express.json());
 
