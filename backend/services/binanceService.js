@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const BINANCE_API_URL = process.env.BINANCE_API_URL;
+// const BINANCE_API_URL = process.env.BINANCE_API_URL;
+const BINANCE_API_URL = process.env.BINANCE_API_URL || "https://api.binance.com";
 
 // Fetch live price of a given symbol (e.g., BTCUSDT, ETHUSDT)
 export const getCryptoPrice = async (symbol) => {
